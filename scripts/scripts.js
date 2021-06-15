@@ -38,9 +38,8 @@ function addBookToLibrary() {
   return
 }
 
+const container = document.querySelector(".container");
 function displayBooks() {
-  const container = document.querySelector(".container");
-
   myLibrary.forEach(book => {
     bookdiv = document.createElement("div");
     titlediv = document.createElement("div");
@@ -67,5 +66,15 @@ function displayBooks() {
     container.appendChild(bookdiv)
   })
 }
+
+function togglePopup(){
+  document.getElementById("popup-1").classList.toggle("active");
+}
+
+const form = document.querySelector('#form1')
+form.addEventListener('submit', event => {
+  event.preventDefault()
+  console.log(event)
+})
 
 displayBooks()

@@ -10,8 +10,26 @@
   <title>My Library</title>
 </head>
 <body>
-  <h1>My Library</h1>
-  <button class="newbookbtn" type="button">New Book</button>
+  <h1 class="main-header">My Library</h1>
+  <div class="popup" id="popup-1">
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="close-btn" onclick="togglePopup()">&times;</div>
+      <h1 class="popup-header">New Book</h1>
+      <form id="form1">
+        <label for="btitle">Book title:</label><br>
+        <input type="text" id="btitle" name="btitle"><br>
+        <label for="bauthor">Book author:</label><br>
+        <input type="text" id="bauthor" name="bauthor"><br>
+        <label for="bpages">Pages:</label><br>
+        <input type="text" id="bpages" name="bpages"><br>
+        <input class="checkbox" type="checkbox" id="read" name="read">
+        <label for="read">Read</label><br>
+      </form>
+      <button class="formBtn" type="submit" form="form1" value="Submit">Add</button>
+    </div>
+  </div>
+  <button class="newBookBtn" type="button" onclick="togglePopup()">New Book</button>
   <div class="container"></div>
   <script src="scripts/scripts.js"></script>
 </body>
