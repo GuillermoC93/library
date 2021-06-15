@@ -42,11 +42,11 @@ function displayBooks() {
   const container = document.querySelector(".container");
 
   myLibrary.forEach(book => {
-    const bookdiv = document.createElement("div");
-    const titlediv = document.createElement("div");
-    const authordiv = document.createElement("div");
-    const pagesdiv = document.createElement("div");
-    const readdiv = document.createElement("div");
+    bookdiv = document.createElement("div");
+    titlediv = document.createElement("div");
+    authordiv = document.createElement("div");
+    pagesdiv = document.createElement("div");
+    readdiv = document.createElement("div");
 
     titlediv.textContent = book.title
     authordiv.textContent = book.author

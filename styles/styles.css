@@ -9,14 +9,8 @@ h1 {
   font-family: 'PT Serif', serif;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 50px 20px 20px 20px;
-}
-
 .book {
+  background-color: #ffeec6;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,4 +40,18 @@ h1 {
 
 .bookread {
   margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 50px 20px 20px 20px;
+}
+
+.newbookbtn {
+  display: flex;
+  margin: 45px auto 0 auto;
+  height: 30px;
+  font-size: 20px;
 }
