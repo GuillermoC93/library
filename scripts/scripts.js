@@ -1,23 +1,4 @@
-let myLibrary = [
-  {
-    title: "harry potter",
-    author: "jk rowling",
-    pages: 255,
-    read: "yes",
-  },
-  {
-    title: "game of thrones",
-    author: "grr martin",
-    pages: 523,
-    read: "yes",
-  },
-  {
-    title: "atomic habits",
-    author: "james clear",
-    pages: 244,
-    read: "no",
-  }
-];
+let myLibrary = [];
 
 function Book (title, author, pages, read) {
   this.title = title
@@ -39,6 +20,7 @@ function addBookToLibrary() {
 }
 
 const container = document.querySelector(".container");
+
 function displayBooks() {
   myLibrary.forEach(book => {
     bookdiv = document.createElement("div");
@@ -49,7 +31,7 @@ function displayBooks() {
 
     titlediv.textContent = book.title
     authordiv.textContent = book.author
-    pagesdiv.textContent = book.pages
+    pagesdiv.textContent = book.pages + "pg"
     readdiv.textContent = book.read
 
     bookdiv.classList.toggle("book")
@@ -67,14 +49,31 @@ function displayBooks() {
   })
 }
 
+function clearBooks() {
+  while(container.firstChild){
+    container.removeChild(container.firstChild);
+}}
+
 function togglePopup(){
   document.getElementById("popup-1").classList.toggle("active");
 }
 
 const form = document.querySelector('#form1')
-form.addEventListener('submit', event => {
-  event.preventDefault()
-  console.log(event)
+const submitBtn = document.querySelector('.formBtn')
+
+submitBtn.addEventListener('click', event => {
+  event.preventDefault();
+  
+  title = form.btitle.value
+  author = form.bauthor.value
+  pages = form.bpages.value
+  read = form.read.checked ? "read" : "not read"
+
+  myLibrary.push(new Book(title, author, pages, read))
+  form.reset();
+  togglePopup();
+  clearBooks();
+  displayBooks();
 })
 
-displayBooks()
+displayBooks();
