@@ -143,3 +143,8 @@ input {
   border: 2px solid black;
   border-radius: 5px;
 }
+
+.deleteBtn {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
