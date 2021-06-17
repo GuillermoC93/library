@@ -25,11 +25,11 @@ function addBookToLibrary() {
 
 const container = document.querySelector(".container");
 
-function displayBooks() {
+function displayBooks(library) {
   i = -1
 
   // loop through library array 
-  myLibrary.forEach(book => {
+  library.forEach(book => {
     // create elements needed for each book card
     bookdiv = document.createElement("div");
     titlediv = document.createElement("div");
@@ -82,15 +82,17 @@ container.addEventListener('click', event => {
     parentNode = event.target.parentNode
     myLibrary.splice(parentNode.dataset.index, 1)
     clearBooks();
-    displayBooks();
+    saveStorage(myLibrary);
+    displayBooks(myLibrary);
     // if the read or not read button is pushed
   } else if (event.target.dataset.button == "readBtn") {
     parentNode = event.target.parentNode
     // change the read status of the parent node, which is assigned to the my Library
     // array through the dataset index value
     myLibrary[parentNode.dataset.index].changeReadStatus()
+    saveStorage(myLibrary);
     clearBooks();
-    displayBooks();
+    displayBooks(myLibrary);
   }
 })
 
@@ -124,7 +126,33 @@ submitBtn.addEventListener('click', event => {
   togglePopup();
   // clear books display before running displayBooks function again
   clearBooks();
-  displayBooks();
+  // save array to local storage
+  saveStorage(myLibrary);
+  // display array
+  displayBooks(myLibrary);
 });
 
-displayBooks();
+// function to save data into local storage
+function saveStorage(array) {
+  library = JSON.stringify(array)
+  localStorage.setItem('books', library)
+}
+
+function load() {
+  // if theres no local storage items
+  if (!localStorage.getItem('books')) {
+    displayBooks(myLibrary);
+  } else {
+    // get item from local storage
+    books = localStorage.getItem('books');
+    // parse the raw data
+    books = JSON.parse(books)
+    // transform parsed data into book objects
+    myLibrary = books.map(data => {
+      return new Book(data.title, data.author, data.pages, data.read)
+    })
+    displayBooks(myLibrary);
+  }
+}
+
+load()
