@@ -51,10 +51,6 @@ input {
   margin-bottom: 25px;
 }
 
-.bookread {
-  margin-bottom: 20px;
-}
-
 .container {
   display: flex;
   flex-direction: row;
@@ -147,8 +143,21 @@ input {
 .deleteBtn {
   margin-bottom: 20px;
   font-size: 20px;
+  border: 2px solid black;
+  border-radius: 3px;
 }
 
 .readBtn {
   font-size: 20px;
+  font-weight: bold;
+  background-color: #cdffcc;
+  border: 2px solid black;
+  border-radius: 3px;
+}
+
+.notReadBtn {
+  font-size: 20px;
+  background-color: #fc6c85;
+  border: 2px solid black;
+  border-radius: 3px;
 }

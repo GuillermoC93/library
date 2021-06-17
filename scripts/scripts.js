@@ -50,8 +50,10 @@ function displayBooks() {
     titlediv.classList.toggle("booktitle");
     authordiv.classList.toggle("bookauthor");
     pagesdiv.classList.toggle("bookpages");
-    readBtn.classList.toggle("bookread");
     deleteBtn.classList.toggle("deleteBtn");
+
+    // handle the readBtn class assignment
+    book.read ? readBtn.classList.toggle("readBtn") : readBtn.classList.toggle("notReadBtn")
 
     // append each div to final book div
     bookdiv.appendChild(titlediv);
