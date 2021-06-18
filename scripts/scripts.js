@@ -14,15 +14,6 @@ Book.prototype.changeReadStatus = function () {
   this.read ? this.read = false : this.read = true
 }
 
-function addBookToLibrary() {
-  let title = prompt("Please enter the book title")
-  let author = prompt("Please enter book author")
-  let pages = prompt("Please enter the number of pages in the book")
-  let read = prompt("Have you read this book?")
-  myLibrary.push(new Book(title, author, pages, read))
-  return
-};
-
 const container = document.querySelector(".container");
 
 function displayBooks(library) {
@@ -31,12 +22,12 @@ function displayBooks(library) {
   // loop through library array 
   library.forEach(book => {
     // create elements needed for each book card
-    bookdiv = document.createElement("div");
-    titlediv = document.createElement("div");
-    authordiv = document.createElement("div");
-    pagesdiv = document.createElement("div");
-    readBtn = document.createElement("button");
-    deleteBtn = document.createElement("button");
+    let bookdiv = document.createElement("div");
+    let titlediv = document.createElement("div");
+    let authordiv = document.createElement("div");
+    let pagesdiv = document.createElement("div");
+    let readBtn = document.createElement("button");
+    let deleteBtn = document.createElement("button");
 
     // fill the divs with each books info
     titlediv.textContent = book.title
@@ -134,7 +125,7 @@ submitBtn.addEventListener('click', event => {
 
 // function to save data into local storage
 function saveStorage(array) {
-  library = JSON.stringify(array)
+  let library = JSON.stringify(array)
   localStorage.setItem('books', library)
 }
 
@@ -144,7 +135,7 @@ function load() {
     displayBooks(myLibrary);
   } else {
     // get item from local storage
-    books = localStorage.getItem('books');
+    let books = localStorage.getItem('books');
     // parse the raw data
     books = JSON.parse(books)
     // transform parsed data into book objects
